@@ -42,12 +42,15 @@ def make_chains(text_string):
 
     chains = {}
     
-    words = text_string.split()
-    for i in range(len(words)-1):
-        current_word = words[i]
-        next_word = words[i + 1]# words[i+1]
-        chain = (current_word, next_word)
-        print(chain)
+    words = text_string.split() # [word, word, word]
+    for i in range(len(words)-2): 
+        current_word = words[i] 
+        next_word = words[i + 1]
+        chain = (current_word, next_word) #dictionary[key]
+        if chain in chains:
+            chains[chain].append(words[i + 2])
+        else:
+            chains[chain]= [words[i + 2]]
 
 
     return chains
@@ -56,7 +59,7 @@ def make_chains(text_string):
 def make_text(chains):
     """Return text from chains."""
 
-    words = []
+    words = [key]
 
     # your code goes here
 
@@ -70,6 +73,7 @@ input_text = open_and_read_file(input_path)
 
 # Get a Markov chain
 chains = make_chains(input_text)
+print(chains)
 
 # # Produce random text
 # random_text = make_text(chains)
