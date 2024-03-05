@@ -10,10 +10,10 @@ def open_and_read_file(file_path):
     the file's contents as one string of text.
     """
 
-    file_name = open(file_path)
-
+    file_name = open(file_path).read()
+   
     return file_name
-
+   
 
 def make_chains(text_string):
     """Take input text as string; return dictionary of Markov chains.
@@ -41,8 +41,14 @@ def make_chains(text_string):
     """
 
     chains = {}
+    
+    words = text_string.split()
+    for i in range(len(words)-1):
+        current_word = words[i]
+        next_word = words[i + 1]# words[i+1]
+        chain = (current_word, next_word)
+        print(chain)
 
-    # your code goes here
 
     return chains
 
@@ -65,7 +71,7 @@ input_text = open_and_read_file(input_path)
 # Get a Markov chain
 chains = make_chains(input_text)
 
-# Produce random text
-random_text = make_text(chains)
+# # Produce random text
+# random_text = make_text(chains)
 
-print(random_text)
+# print(random_text)
