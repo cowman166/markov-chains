@@ -61,8 +61,13 @@ def make_text(chains):
 
     chains_keys = list(chains.keys())
     link = choice(chains_keys)
-    print(link)
+    random_word = choice(chains[link])
+    words = [link[0], link[1], random_word]
+    if (link[1], random_word) in chains:
+        random_word = choice(chains[(link[1], random_word)])
+        words.append(random_word)
 
+    print(words)
     # return ' '.join(words)
 
 
