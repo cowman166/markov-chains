@@ -59,11 +59,11 @@ def make_chains(text_string):
 def make_text(chains):
     """Return text from chains."""
 
-    words = [key]
+    chains_keys = list(chains.keys())
+    link = choice(chains_keys)
+    print(link)
 
-    # your code goes here
-
-    return ' '.join(words)
+    # return ' '.join(words)
 
 
 input_path = 'green-eggs.txt'
@@ -75,7 +75,7 @@ input_text = open_and_read_file(input_path)
 chains = make_chains(input_text)
 print(chains)
 
-# # Produce random text
-# random_text = make_text(chains)
+# Produce random text
+random_text = make_text(chains)
 
-# print(random_text)
+print(random_text)
